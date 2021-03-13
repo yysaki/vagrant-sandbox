@@ -21,6 +21,16 @@
     src: web.html
     dest: "/var/www/vhosts/{{ ansible_hostname }}/index.html"
 
+- name: deliver httpd.conf
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart_httpd
+
 - name: template vhost file
   template:
     src: vhost.conf.j2
