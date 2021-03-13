@@ -1,6 +1,6 @@
 ---
 - name: use apche_vhost role playbook
-  hosts: node1
+  hosts: all
   become: true
 
   pre_tasks:

@@ -1,9 +1,0 @@
-[all:vars]
-ansible_user=vagrant
-ansible_port=2222
-
-[web]
-node1
-
-[ftpserver]
-node1
