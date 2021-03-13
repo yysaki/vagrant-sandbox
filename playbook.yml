@@ -1,14 +1,24 @@
 ---
 - name: Install httpd(apache)
-  hosts: common
+  hosts: apache
   become: true
-
   roles:
-    - httpd
+    - apache
 
 - name: Setup apche_vhost
-  hosts: node2
+  hosts: apache_vhost
   become: true
-
   roles:
     - apache_vhost
+
+- name: Install vsftpd on ftpservers when ftpserver group
+  hosts: all
+  become: true
+  roles:
+    - ftpserver
+
+- name: Ensure users
+  hosts: loop_users
+  become: true
+  roles:
+    - loop_users

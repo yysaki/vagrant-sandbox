@@ -15,8 +15,13 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provision 'ansible' do |ansible|
-    ansible.groups = { 'common' => %w[node1 node2 node3],
-                       'apache_vhost' => ['node2'] }
+    ansible.groups = { 'all:vars' => { 'stage' => 'dev' },
+                       'apache' => %w[node1 node2 node3],
+                       'apache_vhost' => ['node2'],
+                       'ftpserver' => ['node3'],
+                       'loop_users' => ['node1'] }
+    ansible.host_vars = { 'node2' => { 'stage' => 'prod' },
+                          'node3' => { 'stage' => 'prod' } }
     ansible.limit = 'all'
     ansible.playbook = 'playbook.yml'
     ansible.verbose = 'vv'

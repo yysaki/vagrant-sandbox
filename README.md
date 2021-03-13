@@ -1,5 +1,8 @@
 # vagrant-sandbox
 
+https://ansible.github.io/workshops/exercises/ansible_rhel/README.ja.html
+Ansible Workshop Section1 by CentOS8, Vagrant
+
 ## How to install ansible
 
 ```
