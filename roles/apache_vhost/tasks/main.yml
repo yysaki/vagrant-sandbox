@@ -1,16 +1,4 @@
 ---
-# tasks file for roles/apache_vhost
-- name: install httpd
-  yum:
-    name: httpd
-    state: latest
-
-- name: start and enable httpd service
-  service:
-    name: httpd
-    state: started
-    enabled: true
-
 - name: ensure vhost directory is present
   file:
     path: "/var/www/vhosts/{{ ansible_hostname }}"
@@ -21,7 +9,7 @@
     src: web.html
     dest: "/var/www/vhosts/{{ ansible_hostname }}/index.html"
 
-- name: deliver httpd.conf
+- name: template httpd.conf
   template:
     src: httpd.conf.j2
     dest: /etc/httpd/conf/httpd.conf

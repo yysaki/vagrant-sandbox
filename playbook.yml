@@ -1,15 +1,14 @@
 ---
-- name: use apche_vhost role playbook
-  hosts: all
+- name: Install httpd(apache)
+  hosts: common
   become: true
 
-  pre_tasks:
-    - debug:
-        msg: 'Beginning web server configuration.'
+  roles:
+    - httpd
+
+- name: Setup apche_vhost
+  hosts: node2
+  become: true
 
   roles:
     - apache_vhost
-
-  post_tasks:
-    - debug:
-        msg: 'Web server has been configured.'
